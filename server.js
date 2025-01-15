@@ -2,11 +2,12 @@ import express from 'express';
 import cors from 'cors';
 import WebTorrent from 'webtorrent';
 import axios from 'axios';
+import dotenv from 'dotenv';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-
+dotenv.config();
 function extractDriveFileId(link) {
   const match = link.match(/\/d\/([a-zA-Z0-9_-]+)/);
   return match ? match[1] : null;
@@ -80,7 +81,9 @@ app.post('/stream', async (req, res) => {
             }
 
             console.log(`Found MP4 file: ${file.name}`);
-            const streamUrl = `http://localhost:${server.address().port}/stream/torrent/${encodeURIComponent(file.name)}`;
+            
+            const baseUrl = process.env.BASE_URL || `http://localhost:${server.address().port}`;
+            const streamUrl = `${baseUrl}/stream/torrent/${encodeURIComponent(file.name)}`;
             res.json({ streamUrl });
           } catch (error) {
             console.error('Error handling torrent ready event:', error.message);
