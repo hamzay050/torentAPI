@@ -1,0 +1,28 @@
+{
+  "name": "webtorrent-api",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^7.14.0",
+    "axios": "^1.7.9",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "googleapis": "^144.0.0",
+    "nodemon": "^3.1.9",
+    "webtorrent": "^2.5.11"
+  },
+
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
+
+
+
+
+
